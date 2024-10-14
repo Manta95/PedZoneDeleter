@@ -8,16 +8,6 @@ for i = 1, #areas do
     playerInArea[i] = false
 end
 
-RegisterNetEvent('clearAreaOfPeds')
-AddEventHandler('clearAreaOfPeds', function(areas)
-    for _, area in ipairs(areas) do
-        local coords = area.coords
-        local radius = area.radius
-
-        ClearAreaOfPeds(coords.x, coords.y, coords.z, radius, 1)
-    end
-end)
-
 CreateThread(function()
     while true do
         local playerPed = PlayerPedId()
@@ -29,7 +19,7 @@ CreateThread(function()
 
             if #(playerCoords - coords) <= radius then
                 if not playerInArea[i] then
-                    TriggerServerEvent('clearAreaOfPeds', { area })
+                    ClearAreaOfPeds(coords.x, coords.y, coords.z, radius, 1)
                     playerInArea[i] = true
                 end
             else
