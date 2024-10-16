@@ -1,13 +1,17 @@
 local areas = {
     { coords = vector3(-1095.872559, -833.806580, 37.695602), radius = 30.0 }, -- LSPD
-    { coords = vector3(-1200.261597, -895.782166, 19.983397), radius = 10.0 }  -- Burgershot
+    { coords = vector3(-1200.261597, -895.782166, 19.983397), radius = 10.0 },  -- Burgershot
+    { coords = vector3(811.48, -881.01, 33.04), radius = 10.0 }  -- Benny's
+
 }
 
 local playerInArea = {}
+
 for i = 1, #areas do
     playerInArea[i] = false
 end
 
+-- Function to get all NPCs created into the zone
 local function RemovePedsInArea(coords, radius)
     local peds = GetGamePool('CPed')
     for _, ped in ipairs(peds) do
